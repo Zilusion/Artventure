@@ -1,0 +1,38 @@
+doctype html
+html(lang="ru")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Drawino
+        link(rel="stylesheet", href="css/main.css")
+    body.content
+        header.header
+            .container.header__container  
+        main.main
+            section.canvas
+                .container.canvas__container 
+                    #gameInfo
+                        h1 Игра "Рисование по очереди"
+                        #playersList
+                        #currentPlayer
+                        #timeLeft
+
+                    .canvas__menu
+                        button#startGameButton.button.button--start Начать игру
+                        //- button.button.button--save Сохранить
+                        //- button.button.button--load Загрузить
+                        //- button.button.button--save-to-image Сохранить картинку
+                        input#thicknessRange.input--range(type='range', name='thickness', min='1', max='1000', step='1', value='100')
+                        input#colorPicker(type='color', name='color')
+                        //- p.mouse-direction 
+                        //- p.mouse-coordinates 
+                        //- p.canvas-width 
+                        //- p.canvas-height
+                    //- img.canvas__saved-image(scr='' alt='')
+                    .canvases
+                        canvas#drawingCanvas.drawing-canvas
+                        canvas#previewCanvas.preview-canvas
+        footer.footer
+            .container.footer__container 
+        script(src='/socket.io/socket.io.js')
+        script(src='js/main.js')

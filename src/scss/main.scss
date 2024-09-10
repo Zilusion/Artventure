@@ -1,0 +1,147 @@
+@use './reset.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+$transparent: #00000000;
+$green: #92b775;
+$blue: #75afb7;
+$dark-green: #133215;
+$white: #f3e8d3;
+$orange: #ff820f;
+$purple: #6947f4;
+
+$background: $white;
+$canvas-background: $white;
+$canvas-border: $dark-green;
+$button-background: $green;
+$button-border: $transparent;
+$button-color: $white;
+$button-background-active: $white;
+$button-border-active: $dark-green;
+$button-color-active: $dark-green;
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background: $background;
+	font-size: 16px;
+	font-family: 'Roboto';
+}
+
+.container {
+	padding: 0 15px 20px 15px;
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.canvas {
+	&__container {
+		display: flex;
+		flex-direction: column;
+		padding-top: 2vh;
+		height: 100vh;
+	}
+
+	&__menu {
+		padding-bottom: 1rem;
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		flex-flow: row wrap;
+	}
+
+	&__saved-image {
+		display: none;
+	}
+}
+
+.button--save {
+	padding: 10px 20px;
+	border-radius: 10px;
+	border: 2px solid $button-border;
+	background-color: $button-background;
+	color: $button-color;
+	width: 15rem;
+	transition: all 0.2s ease-in;
+
+	&:hover,
+	&:focus {
+		border-color: $button-border-active;
+		background-color: $button-background-active;
+		color: $button-color-active;
+	}
+
+	&:active {
+		translate: 0 5px;
+		scale: 1.1;
+	}
+}
+
+.canvases {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+// $canvas-width: 100%;
+// $canvas-height: calc($canvas-width * 0.7);
+
+.drawing-canvas,
+.preview-canvas {
+	border: 3px solid $canvas-border;
+	background: $canvas-background;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.preview-canvas {
+	z-index: 2;
+	pointer-events: none;
+	background: $transparent;
+}
+
+// Range style reset
+input[type='range'] {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	&::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+	}
+
+	&::-moz-range-thumb {
+		border: none;
+	}
+}
+
+// Range styles
+.input--range {
+	background-color: $orange;
+	width: 200px;
+	height: 10px;
+	border-radius: 5px;
+
+	@mixin thumb-style {
+		width: 20px;
+		height: 20px;
+		background-color: $orange;
+		border-radius: 50%;
+	}
+	&::-webkit-slider-thumb {
+		@include thumb-style;
+	}
+
+	&::-moz-range-thumb {
+		@include thumb-style;
+	}
+}
